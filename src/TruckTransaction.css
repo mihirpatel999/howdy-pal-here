@@ -1,17 +1,19 @@
-Container styles
+/* Modern Truck Transaction Styles */
 .truck-transaction-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #e0e7ff 0%, #f8fafc 100%);
+  background: hsl(var(--background));
   padding: 2rem 0;
 }
 
 .truck-transaction-card {
   max-width: 900px;
   margin: 0 auto;
-  background: #fff;
-  border-radius: 1.5rem;
-  box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px hsl(var(--primary) / 0.08);
   padding: 2.5rem 2rem;
+  backdrop-filter: blur(16px);
 }
 
 .truck-transaction-title {
@@ -19,8 +21,12 @@ Container styles
   font-weight: 700;
   text-align: center;
   margin-bottom: 2rem;
-  color: #1e293b;
+  color: hsl(var(--foreground));
   letter-spacing: 1px;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 /* Form grid */
@@ -48,29 +54,32 @@ Container styles
 .truck-transaction-textarea {
   width: 100%;
   padding: 0.7rem 1rem;
-  border: 1.5px solid #cbd5e1;
-  border-radius: 0.7rem;
+  border: 1.5px solid hsl(var(--border));
+  border-radius: var(--radius);
   font-size: 1rem;
-  background: #f1f5f9;
-  transition: border 0.2s;
+  background: hsl(var(--background));
+  color: hsl(var(--foreground));
+  transition: all 0.2s ease;
 }
 .truck-transaction-input:focus,
 .truck-transaction-select:focus,
 .truck-transaction-textarea:focus {
-  border-color: #6366f1;
+  border-color: hsl(var(--primary));
   outline: none;
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.1);
 }
 
-/* Table styles */
+/* Modern Table styles */
 .truck-transaction-table {
   width: 100%;
   border-collapse: separate;
   border-spacing: 0;
   margin-bottom: 1.5rem;
-  background: #f9fafb;
-  border-radius: 1rem;
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: var(--radius);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  box-shadow: 0 4px 20px -4px hsl(var(--primary) / 0.15);
 }
 .truck-transaction-table th,
 .truck-transaction-table td {
@@ -78,21 +87,22 @@ Container styles
   text-align: left;
 }
 .truck-transaction-table th {
-  background: #6366f1;
-  color: #fff;
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-600)));
+  color: hsl(var(--primary-foreground));
   font-weight: 600;
 }
 .truck-transaction-table tr:not(:last-child) {
-  border-bottom: 1px solid #e5e7eb;
+  border-bottom: 1px solid hsl(var(--border));
 }
 .truck-transaction-table tr {
-  background: #fff;
+  background: hsl(var(--card));
+  transition: all 0.2s ease;
 }
-.truck-transaction-table tr:last-child {
-  background: #f1f5f9;
+.truck-transaction-table tr:hover {
+  background: hsl(var(--muted) / 0.5);
 }
 
-/* Button styles */
+/* Modern Button styles */
 .truck-transaction-btn {
   display: flex;
   align-items: center;
@@ -100,34 +110,33 @@ Container styles
   gap: 0.3em;
   font-size: 0.92rem;
   font-weight: 600;
-  border-radius: 999px;
-  border: 1.5px solid #fef3c7;
-  box-shadow: 0 2px 8px rgba(251,191,36,0.10);
+  border-radius: var(--radius);
+  border: 1.5px solid hsl(var(--border));
+  box-shadow: 0 2px 8px hsl(var(--primary) / 0.10);
   padding: 0.28rem 0.85rem;
-  transition: background 0.18s, transform 0.18s, box-shadow 0.18s;
+  transition: all 0.18s ease;
   margin-bottom: 0;
+  cursor: pointer;
 }
 .truck-transaction-btn.edit {
-  background: linear-gradient(90deg, #fde68a 0%, #fbbf24 100%);
-  color: #7c4700;
-  border-color: #fde68a;
+  background: linear-gradient(90deg, hsl(var(--warning) / 0.8), hsl(var(--warning)));
+  color: hsl(var(--warning-foreground));
+  border-color: hsl(var(--warning));
 }
 .truck-transaction-btn.edit:hover {
-  background: linear-gradient(90deg, #fbbf24 0%, #fde68a 100%);
-  color: #b45309;
-  transform: scale(1.08);
-  box-shadow: 0 4px 16px rgba(251,191,36,0.18);
+  background: linear-gradient(90deg, hsl(var(--warning)), hsl(var(--warning) / 0.8));
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px hsl(var(--warning) / 0.25);
 }
 .truck-transaction-btn.delete {
-  background: linear-gradient(90deg, #fca5a5 0%, #f87171 100%);
-  color: #991b1b;
-  border-color: #fca5a5;
+  background: linear-gradient(90deg, hsl(var(--destructive) / 0.8), hsl(var(--destructive)));
+  color: hsl(var(--destructive-foreground));
+  border-color: hsl(var(--destructive));
 }
 .truck-transaction-btn.delete:hover {
-  background: linear-gradient(90deg, #f87171 0%, #fca5a5 100%);
-  color: #b91c1c;
-  transform: scale(1.08);
-  box-shadow: 0 4px 16px rgba(239,68,68,0.18);
+  background: linear-gradient(90deg, hsl(var(--destructive)), hsl(var(--destructive) / 0.8));
+  transform: scale(1.05);
+  box-shadow: 0 4px 16px hsl(var(--destructive) / 0.25);
 }
 .truck-transaction-btn svg {
   width: 0.9em;

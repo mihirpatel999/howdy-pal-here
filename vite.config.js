@@ -39,13 +39,16 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/', // ✅ Add this line to support hosting in /truck subdirectory
+  base: '/',
+  server: {
+    port: 8080
+  },
   plugins: [
     react(),
     tailwindcss()
   ],
   build: {
-    chunkSizeWarningLimit: 1000 // ✅ Increases default limit from 500 to 1000 KB
+    chunkSizeWarningLimit: 1000
   }
 })
 
